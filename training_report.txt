@@ -1,0 +1,49 @@
+SentinelX fall classifier - 2026-11-11 06:07
+Data: fall_data.csv
+Rows: 2123  (normal=913, fall=1210)
+Clips: normal=364, fall=491
+Evaluation: 5-fold cross-validation, grouped by clip
+
+=== Random Forest (trained) ===
+Accuracy: 0.912   Fall F1: 0.921
+Confusion matrix (rows = true, cols = predicted) [normal, fall]:
+[[ 849   64]
+ [ 123 1087]]
+              precision    recall  f1-score   support
+
+      normal      0.873     0.930     0.901       913
+        fall      0.944     0.898     0.921      1210
+
+    accuracy                          0.912      2123
+   macro avg      0.909     0.914     0.911      2123
+weighted avg      0.914     0.912     0.912      2123
+
+
+=== Rule-based baseline ===
+Accuracy: 0.740   Fall F1: 0.716
+Confusion matrix (rows = true, cols = predicted) [normal, fall]:
+[[874  39]
+ [513 697]]
+              precision    recall  f1-score   support
+
+      normal      0.630     0.957     0.760       913
+        fall      0.947     0.576     0.716      1210
+
+    accuracy                          0.740      2123
+   macro avg      0.789     0.767     0.738      2123
+weighted avg      0.811     0.740     0.735      2123
+
+
+Top 10 features:
+  r_eye_y          0.104
+  nose_y           0.101
+  l_eye_y          0.077
+  aspect_ratio     0.073
+  torso_angle      0.068
+  r_hip_y          0.046
+  r_ear_y          0.043
+  l_ankle_y        0.041
+  l_hip_y          0.039
+  l_ear_y          0.035
+
+Saved model to fall_model.joblib
